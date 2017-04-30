@@ -85,6 +85,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="ServiceCollectionExtensions.cs" />
+    <Compile Include="Shared\TypeHelper.cs" />
     <Compile Include="Spatial\GeographyConverter.cs" />
     <Compile Include="Submit\ChangeSetInitializer.cs" />
     <Compile Include="Submit\SubmitExecutor.cs" />
@@ -96,6 +97,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <AdditionalFiles Include="..\stylecop.json">
+      <Link>stylecop.json</Link>
+    </AdditionalFiles>
     <None Include="Microsoft.Restier.Providers.EntityFramework.nuspec" />
     <None Include="packages.config" />
   </ItemGroup>
@@ -115,6 +119,11 @@
       <LastGenOutput>SharedResources.EntityFramework.Designer.cs</LastGenOutput>
       <CustomToolNamespace>Microsoft.Restier.Shared</CustomToolNamespace>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\Newtonsoft.Json.dll" />
+    <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
+    <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(StyleCopTargets)" Condition="Exists('$(StyleCopTargets)')" />

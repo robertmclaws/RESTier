@@ -10,9 +10,7 @@ using System.Web.OData;
 using System.Web.OData.Extensions;
 using System.Web.OData.Routing;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.OData.Edm;
 using Microsoft.OData.Service.Sample.TrippinInMemory.Api;
-using Microsoft.OData.Service.Sample.TrippinInMemory.Models;
 using Microsoft.Restier.Core;
 
 namespace Microsoft.OData.Service.Sample.TrippinInMemory.Controllers

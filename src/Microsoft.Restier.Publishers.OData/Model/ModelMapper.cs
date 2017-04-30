@@ -1,12 +1,12 @@
 ﻿// Copyright (c) Microsoft Corporation.  All rights reserved.
 // Licensed under the MIT License.  See License.txt in the project root for license information.
 
-using System;
-using System.Linq;
-using System.Web.OData;
 using Microsoft.OData.Edm;
 using Microsoft.Restier.Core;
 using Microsoft.Restier.Core.Model;
+using System;
+using System.Linq;
+using System.Web.OData;
 
 namespace Microsoft.Restier.Publishers.OData.Model
 {

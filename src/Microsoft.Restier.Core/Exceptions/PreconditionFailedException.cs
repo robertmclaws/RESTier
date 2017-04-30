@@ -12,7 +12,7 @@ namespace Microsoft.Restier.Core
     public class PreconditionFailedException : Exception
     {
         /// <summary>
-        /// Initializes a new instance of the PreconditionFailedException class.
+        /// Initializes a new instance of the <see cref="PreconditionFailedException"/> class.
         /// </summary>
         public PreconditionFailedException()
             : this(null, null)
@@ -20,7 +20,7 @@ namespace Microsoft.Restier.Core
         }
 
         /// <summary>
-        /// Initializes a new instance of the PreconditionFailedException class.
+        /// Initializes a new instance of the <see cref="PreconditionFailedException"/> class.
         /// </summary>
         /// <param name="message">Plain text error message for this exception.</param>
         public PreconditionFailedException(string message)
@@ -29,7 +29,7 @@ namespace Microsoft.Restier.Core
         }
 
         /// <summary>
-        /// Initializes a new instance of the PreconditionFailedException class.
+        /// Initializes a new instance of the <see cref="PreconditionFailedException"/> class.
         /// </summary>
         /// <param name="message">Plain text error message for this exception.</param>
         /// <param name="innerException">Exception that caused this exception to be thrown.</param>

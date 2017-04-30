@@ -1,14 +1,14 @@
 ﻿// Copyright (c) Microsoft Corporation.  All rights reserved.
 // Licensed under the MIT License.  See License.txt in the project root for license information.
 
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Restier.Core.Submit;
 using System;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Restier.Core.Submit;
 
 namespace Microsoft.Restier.Core
 {
@@ -25,7 +25,6 @@ namespace Microsoft.Restier.Core
             this.targetType = targetType;
         }
 
-        /// <inheritdoc/>
         public static void ApplyTo(
             IServiceCollection services,
             Type targetType)
@@ -60,18 +59,18 @@ namespace Microsoft.Restier.Core
         {
             switch (item.Type)
             {
-                case ChangeSetItemType.DataModification:
+                case ChangeSetItemTypes.DataModification:
                     DataModificationItem dataModification = (DataModificationItem)item;
                     string operationName = null;
-                    if (dataModification.DataModificationItemAction == DataModificationItemAction.Insert)
+                    if (dataModification.DataModificationItemAction == DataModificationItemActions.Insert)
                     {
                         operationName = ConventionBasedChangeSetConstants.FilterMethodDataModificationInsert;
                     }
-                    else if (dataModification.DataModificationItemAction == DataModificationItemAction.Update)
+                    else if (dataModification.DataModificationItemAction == DataModificationItemActions.Update)
                     {
                         operationName = ConventionBasedChangeSetConstants.FilterMethodDataModificationUpdate;
                     }
-                    else if (dataModification.DataModificationItemAction == DataModificationItemAction.Remove)
+                    else if (dataModification.DataModificationItemAction == DataModificationItemActions.Remove)
                     {
                         operationName = ConventionBasedChangeSetConstants.FilterMethodDataModificationDelete;
                     }
@@ -88,7 +87,7 @@ namespace Microsoft.Restier.Core
         {
             switch (item.Type)
             {
-                case ChangeSetItemType.DataModification:
+                case ChangeSetItemTypes.DataModification:
                     DataModificationItem dataModification = (DataModificationItem)item;
                     return new object[] { dataModification.Resource };
 

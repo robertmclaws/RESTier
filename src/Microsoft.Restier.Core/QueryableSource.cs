@@ -80,25 +80,4 @@ namespace Microsoft.Restier.Core
             throw new NotSupportedException(Resources.CallQueryableSourceMethodNotSupported);
         }
     }
-
-    internal class QueryableSource<T> : QueryableSource, IOrderedQueryable<T>
-    {
-        public QueryableSource(Expression expression)
-            : base(expression)
-        {
-        }
-
-        public override Type ElementType
-        {
-            get
-            {
-                return typeof(T);
-            }
-        }
-
-        IEnumerator<T> IEnumerable<T>.GetEnumerator()
-        {
-            throw new NotSupportedException(Resources.CallQueryableSourceMethodNotSupported);
-        }
-    }
 }

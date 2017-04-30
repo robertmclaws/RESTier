@@ -11,7 +11,6 @@ using Microsoft.Restier.Core.Submit;
 using Microsoft.Restier.Publishers.OData.Batch;
 using Microsoft.Restier.Publishers.OData.Model;
 using Microsoft.Restier.Publishers.OData.Query;
-using Net=System.Net.Http;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -161,7 +160,7 @@ namespace Microsoft.Restier.Publishers.OData
                 entitySet.Name,
                 expectedEntityType.GetClrType(Api.ServiceProvider),
                 actualEntityType.GetClrType(Api.ServiceProvider),
-                DataModificationItemAction.Insert,
+                DataModificationItemActions.Insert,
                 null,
                 null,
                 edmEntityObject.CreatePropertyDictionary(actualEntityType, api, true));
@@ -230,7 +229,7 @@ namespace Microsoft.Restier.Publishers.OData
                 entitySet.Name,
                 path.EdmType.GetClrType(Api.ServiceProvider),
                 null,
-                DataModificationItemAction.Remove,
+                DataModificationItemActions.Remove,
                 RestierQueryBuilder.GetPathKeyValues(path),
                 propertiesInEtag,
                 null);
@@ -381,7 +380,7 @@ namespace Microsoft.Restier.Publishers.OData
                 entitySet.Name,
                 expectedEntityType.GetClrType(Api.ServiceProvider),
                 actualEntityType.GetClrType(Api.ServiceProvider),
-                DataModificationItemAction.Update,
+                DataModificationItemActions.Update,
                 RestierQueryBuilder.GetPathKeyValues(path),
                 propertiesInEtag,
                 edmEntityObject.CreatePropertyDictionary(actualEntityType, api, false));
@@ -524,13 +523,7 @@ namespace Microsoft.Restier.Publishers.OData
             return queryable;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="queryable"></param>
-        /// <param name="path"></param>
-        /// <param name="applyCount"></param>
-        /// <returns></returns>
+#pragma warning disable SA1009 // Closing parenthesis must be spaced correctly
         private async Task<(IQueryable Queryable, ETag Etag)> ApplyQueryOptionsAsync(
             IQueryable queryable, ODataPath path, bool applyCount)
         {
@@ -541,6 +534,7 @@ namespace Microsoft.Restier.Publishers.OData
                 // Query options don't apply to $value.
                 return (queryable, null);
             }
+#pragma warning restore SA1009 // Closing parenthesis must be spaced correctly
 
             HttpRequestMessageProperties properties = this.Request.ODataProperties();
             var model = await Api.GetModelAsync();

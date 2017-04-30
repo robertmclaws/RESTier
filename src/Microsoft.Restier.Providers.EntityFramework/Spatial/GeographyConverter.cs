@@ -1,11 +1,11 @@
 ﻿// Copyright (c) Microsoft Corporation.  All rights reserved.
 // Licensed under the MIT License.  See License.txt in the project root for license information.
 
+using Microsoft.Spatial;
 using System;
 using System.Data.Entity.Spatial;
 using System.Globalization;
 using System.Text;
-using Microsoft.Spatial;
 
 namespace Microsoft.Restier.Providers.EntityFramework
 {

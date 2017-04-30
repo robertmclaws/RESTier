@@ -1,12 +1,12 @@
 ﻿// Copyright (c) Microsoft Corporation.  All rights reserved.
 // Licensed under the MIT License.  See License.txt in the project root for license information.
 
-using System;
-using System.Web.OData.Extensions;
-using System.Web.OData.Formatter.Serialization;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OData;
 using Microsoft.OData.Edm;
+using System;
+using System.Web.OData.Extensions;
+using System.Web.OData.Formatter.Serialization;
 
 namespace Microsoft.Restier.Publishers.OData.Formatter
 {

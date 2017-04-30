@@ -1,18 +1,17 @@
 ﻿// Copyright (c) Microsoft Corporation.  All rights reserved.
 // Licensed under the MIT License.  See License.txt in the project root for license information.
 
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Restier.Core;
+using Microsoft.Restier.Core.Submit;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.OData.Batch;
 using System.Web.OData.Extensions;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Restier.Core;
-using Microsoft.Restier.Core.Submit;
 
 namespace Microsoft.Restier.Publishers.OData.Batch
 {
@@ -51,9 +50,9 @@ namespace Microsoft.Restier.Publishers.OData.Batch
 
             foreach (HttpRequestMessage request in Requests)
             {
-                // Since exceptions may occure before the request is sent to RestierController,
+                // Since exceptions may occur before the request is sent to RestierController,
                 // we must catch the exceptions here and call OnChangeSetCompleted,
-                // so as to avoid deadlock mentioned in Github Issue #82.
+                // so as to avoid deadlock mentioned in GitHub Issue #82.
                 TaskCompletionSource<HttpResponseMessage> tcs = new TaskCompletionSource<HttpResponseMessage>();
                 var task =
                     SendMessageAsync(invoker, request, cancellationToken, contentIdToLocationMapping)

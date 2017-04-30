@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Web.OData;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OData.Edm;
-using Microsoft.OData.UriParser;
 using Microsoft.Restier.Core;
 using Microsoft.Restier.Core.Model;
 using Microsoft.Restier.Providers.EntityFramework;

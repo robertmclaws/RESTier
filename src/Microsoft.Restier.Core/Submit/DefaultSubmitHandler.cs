@@ -70,18 +70,18 @@ namespace Microsoft.Restier.Core.Submit
         {
             switch (item.Type)
             {
-                case ChangeSetItemType.DataModification:
+                case ChangeSetItemTypes.DataModification:
                     DataModificationItem dataModification = (DataModificationItem)item;
                     string message = null;
-                    if (dataModification.DataModificationItemAction == DataModificationItemAction.Insert)
+                    if (dataModification.DataModificationItemAction == DataModificationItemActions.Insert)
                     {
                         message = Resources.NoPermissionToInsertEntity;
                     }
-                    else if (dataModification.DataModificationItemAction == DataModificationItemAction.Update)
+                    else if (dataModification.DataModificationItemAction == DataModificationItemActions.Update)
                     {
                         message = Resources.NoPermissionToUpdateEntity;
                     }
-                    else if (dataModification.DataModificationItemAction == DataModificationItemAction.Remove)
+                    else if (dataModification.DataModificationItemAction == DataModificationItemActions.Remove)
                     {
                         message = Resources.NoPermissionToDeleteEntity;
                     }
@@ -111,13 +111,13 @@ namespace Microsoft.Restier.Core.Submit
 
             foreach (ChangeSetItem item in changeSetItems.Where(i => i.HasChanged()))
             {
-                if (item.ChangeSetItemProcessingStage == ChangeSetItemProcessingStage.ChangedWithinOwnPreEventing)
+                if (item.ChangeSetItemProcessingStage == ChangeSetItemProcessingStages.ChangedWithinOwnPreEventing)
                 {
-                    item.ChangeSetItemProcessingStage = ChangeSetItemProcessingStage.PreEvented;
+                    item.ChangeSetItemProcessingStage = ChangeSetItemProcessingStages.PreEvented;
                 }
                 else
                 {
-                    item.ChangeSetItemProcessingStage = ChangeSetItemProcessingStage.Validated;
+                    item.ChangeSetItemProcessingStage = ChangeSetItemProcessingStages.Validated;
                 }
             }
         }
@@ -182,9 +182,9 @@ namespace Microsoft.Restier.Core.Submit
         {
             foreach (ChangeSetItem item in changeSetItems)
             {
-                if (item.ChangeSetItemProcessingStage == ChangeSetItemProcessingStage.Validated)
+                if (item.ChangeSetItemProcessingStage == ChangeSetItemProcessingStages.Validated)
                 {
-                    item.ChangeSetItemProcessingStage = ChangeSetItemProcessingStage.PreEventing;
+                    item.ChangeSetItemProcessingStage = ChangeSetItemProcessingStages.PreEventing;
 
                     var processor = context.GetApiService<IChangeSetItemFilter>();
                     if (processor != null)
@@ -192,17 +192,17 @@ namespace Microsoft.Restier.Core.Submit
                         await processor.OnChangeSetItemProcessingAsync(context, item, cancellationToken);
                     }
 
-                    if (item.ChangeSetItemProcessingStage == ChangeSetItemProcessingStage.PreEventing)
+                    if (item.ChangeSetItemProcessingStage == ChangeSetItemProcessingStages.PreEventing)
                     {
                         // if the state is still the intermediate state,
                         // the entity was not changed during processing
                         // and can move to the next step
-                        item.ChangeSetItemProcessingStage = ChangeSetItemProcessingStage.PreEvented;
+                        item.ChangeSetItemProcessingStage = ChangeSetItemProcessingStages.PreEvented;
                     }
-                    else if (item.ChangeSetItemProcessingStage == ChangeSetItemProcessingStage.Initialized /*&&
+                    else if (item.ChangeSetItemProcessingStage == ChangeSetItemProcessingStages.Initialized /*&&
                         entity.Details.EntityState == originalEntityState*/)
                     {
-                        item.ChangeSetItemProcessingStage = ChangeSetItemProcessingStage.ChangedWithinOwnPreEventing;
+                        item.ChangeSetItemProcessingStage = ChangeSetItemProcessingStages.ChangedWithinOwnPreEventing;
                     }
                 }
             }

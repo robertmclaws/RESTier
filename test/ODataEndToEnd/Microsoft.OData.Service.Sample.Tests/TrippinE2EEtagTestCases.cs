@@ -3,7 +3,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Microsoft.OData.Client;
 using Microsoft.OData.Service.Sample.Trippin.Models;
 using Xunit;

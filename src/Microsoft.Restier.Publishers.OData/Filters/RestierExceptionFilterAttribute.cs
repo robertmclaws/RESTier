@@ -3,6 +3,10 @@
 
 extern alias Net;
 
+using Microsoft.OData;
+using Microsoft.Restier.Core;
+using Microsoft.Restier.Core.Submit;
+using Net::System.Net.Http.Formatting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,10 +18,6 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Filters;
 using System.Web.Http.Results;
-using Microsoft.OData;
-using Microsoft.Restier.Core;
-using Microsoft.Restier.Core.Submit;
-using Net::System.Net.Http.Formatting;
 
 namespace Microsoft.Restier.Publishers.OData
 {
@@ -126,9 +126,9 @@ namespace Microsoft.Restier.Publishers.OData
                 code = HttpStatusCode.NotImplemented;
             }
 
-            // When exception occured in a ChangeSet request,
+            // When exception occurred in a ChangeSet request,
             // exception must be handled in OnChangeSetCompleted
-            // to avoid deadlock in Github Issue #82.
+            // to avoid deadlock in GitHub Issue #82.
             var changeSetProperty = context.Request.GetChangeSet();
             if (changeSetProperty != null)
             {

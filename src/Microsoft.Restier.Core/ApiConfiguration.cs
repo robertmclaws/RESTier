@@ -1,9 +1,9 @@
 ﻿// Copyright (c) Microsoft Corporation.  All rights reserved.
 // Licensed under the MIT License.  See License.txt in the project root for license information.
 
+using Microsoft.OData.Edm;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.OData.Edm;
 
 namespace Microsoft.Restier.Core
 {
@@ -24,9 +24,17 @@ namespace Microsoft.Restier.Core
     {
         private Task<IEdmModel> modelTask;
 
+        /// <summary>
+        /// Gets the <see cref="IEdmModel" /> for the API.
+        /// </summary>
         internal IEdmModel Model { get; private set; }
 
-        internal TaskCompletionSource<IEdmModel> CompeteModelGeneration(out Task<IEdmModel> running)
+        /// <summary>
+        /// Finishes generating the model for an Api.
+        /// </summary>
+        /// <param name="running">Specifies whether or not the process is currently running.</param>
+        /// <returns>A <see cref="TaskCompletionSource{IEdmModel}"/> containing the status of the model generation.</returns>
+        internal TaskCompletionSource<IEdmModel> CompleteModelGeneration(out Task<IEdmModel> running)
         {
             var source = new TaskCompletionSource<IEdmModel>(TaskCreationOptions.AttachedToParent);
             var runningTask = Interlocked.CompareExchange(ref modelTask, source.Task, null);

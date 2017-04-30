@@ -1,13 +1,13 @@
 ﻿// Copyright (c) Microsoft Corporation.  All rights reserved.
 // Licensed under the MIT License.  See License.txt in the project root for license information.
 
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OData.Edm;
+using Microsoft.Restier.Core.Query;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.OData.Edm;
-using Microsoft.Restier.Core.Query;
 
 namespace Microsoft.Restier.Core
 {
@@ -26,7 +26,6 @@ namespace Microsoft.Restier.Core
         // Inner should be null unless user add one as inner most
         public IQueryExpressionProcessor Inner { get; set; }
 
-        /// <inheritdoc/>
         public static void ApplyTo(
             IServiceCollection services,
             Type targetType)
@@ -54,8 +53,7 @@ namespace Microsoft.Restier.Core
                 }
             }
 
-            var dataSourceStubReference = context.ModelReference as DataSourceStubModelReference;
-            if (dataSourceStubReference != null)
+            if (context.ModelReference is DataSourceStubModelReference dataSourceStubReference)
             {
                 var entitySet = dataSourceStubReference.Element as IEdmEntitySet;
                 if (entitySet == null)
@@ -78,8 +76,7 @@ namespace Microsoft.Restier.Core
                 return AppendOnFilterExpression(context, entityType.Name);
             }
 
-            var propertyModelReference = context.ModelReference as PropertyModelReference;
-            if (propertyModelReference != null && propertyModelReference.Property != null)
+            if (context.ModelReference is PropertyModelReference propertyModelReference && propertyModelReference.Property != null)
             {
                 // Could be a single navigation property or a collection navigation property
                 var propType = propertyModelReference.Property.Type;
