@@ -1,23 +1,23 @@
 ﻿<?xml version="1.0"?>
 <package>
   <metadata>
-    <id>$id$</id>
+    <id>AdvancedREI.Restier.Publishers.OData</id>
     <version>$version$</version>
     <title>$title$</title>
     <authors>$author$</authors>
     <owners>$author$</owners>
     <description>$description$</description>
     <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
-    <projectUrl>http://odata.github.io/</projectUrl>
+    <projectUrl>https://github.com/robertmclaws/RESTier</projectUrl>
     <releaseNotes>http://odata.github.io/RESTier/</releaseNotes>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <copyright></copyright>
     <dependencies>
-      <dependency id="Microsoft.Restier.Core" version="[$version$]" />
-      <dependency id="Microsoft.OData.Core" version="[7.0.0, 8.0.0)" />
+      <dependency id="AdvancedREI.Restier.Core" version="[$version$]" />
+      <dependency id="AdvancedREI.OData.Core" version="[7.0.0, 8.0.0)" />
       <dependency id="Microsoft.Spatial" version="[7.0.0, 8.0.0)" />
       <dependency id="Microsoft.AspNet.OData" version="[6.0.0,7.0.0)" />
-      <dependency id="System.ValueTuple" version="[4.3.0)" />
+      <dependency id="System.ValueTuple" version="4.3.0" />
     </dependencies>
   </metadata>
 </package>

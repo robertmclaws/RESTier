@@ -1,20 +1,20 @@
 ﻿<?xml version="1.0"?>
 <package>
   <metadata>
-    <id>$id$</id>
+    <id>AdvancedREI.Restier.Providers.EntityFramework</id>
     <version>$version$</version>
     <title>$title$</title>
     <authors>$author$</authors>
     <owners>$author$</owners>
     <description>$description$</description>
     <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
-    <projectUrl>http://odata.github.io/</projectUrl>
+    <projectUrl>https://github.com/robertmclaws/RESTier</projectUrl>
     <releaseNotes>http://odata.github.io/RESTier/</releaseNotes>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <copyright></copyright>
     <dependencies>
       <dependency id="EntityFramework" version="[6.1.3]" />
-      <dependency id="Microsoft.Restier.Core" version="[$version$]" />
+      <dependency id="AdvancedREI.Restier.Core" version="[$version$]" />
     </dependencies>
   </metadata>
 </package>
