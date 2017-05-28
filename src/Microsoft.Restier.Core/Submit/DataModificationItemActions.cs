@@ -10,7 +10,7 @@ namespace Microsoft.Restier.Core.Submit
     /// This is required because during the post-CUD events, the resource state has been lost.
     /// This enum allows the API to remember which pre-CUD event was raised for the Resource.
     /// </remarks>
-    public enum DataModificationItemActions
+    public enum DataModificationItemAction
     {
         /// <summary>
         /// Specifies an undefined action.

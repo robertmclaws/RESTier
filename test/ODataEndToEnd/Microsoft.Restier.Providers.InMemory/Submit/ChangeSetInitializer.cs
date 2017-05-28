@@ -49,7 +49,7 @@ namespace Microsoft.Restier.Providers.InMemory.Submit
                 object resource = null;
                 switch (operation)
                 {
-                    case DataModificationItemActions.Insert:
+                    case DataModificationItemAction.Insert:
                         // Here we create a instance of entity, parameters are from the request.
                         // Known issues: not support odata.id
                         resource = Activator.CreateInstance(resourceType);
@@ -66,7 +66,7 @@ namespace Microsoft.Restier.Providers.InMemory.Submit
                             entitySetPropForInsert.PropertyType.GetMethod("Add").Invoke(originSet, new[] {resource});
                         }
                         break;
-                    case DataModificationItemActions.Update:
+                    case DataModificationItemAction.Update:
                         resource = FindResource(dataSource, context, dataModificationItem, cancellationToken);
                         dataModificationItem.Resource = resource;
 
@@ -76,7 +76,7 @@ namespace Microsoft.Restier.Providers.InMemory.Submit
                             SetValues(resource, resourceType, dataModificationItem.LocalValues);
                         }
                         break;
-                    case DataModificationItemActions.Remove:
+                    case DataModificationItemAction.Remove:
                         resource = FindResource(dataSource, context, dataModificationItem, cancellationToken);
                         dataModificationItem.Resource = resource;
 
@@ -93,7 +93,7 @@ namespace Microsoft.Restier.Providers.InMemory.Submit
                             }
                         }
                         break;
-                    case DataModificationItemActions.Undefined:
+                    case DataModificationItemAction.Undefined:
                         throw new NotImplementedException();
                 }
             }

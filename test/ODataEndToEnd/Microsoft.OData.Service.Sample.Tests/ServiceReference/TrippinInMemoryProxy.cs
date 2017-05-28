@@ -2416,7 +2416,7 @@ namespace Default
         <Key>
           <PropertyRef Name=""UserName"" />
         </Key>
-        <Property Name=""UserName"" Type=""Edm.String"" ConcurrencyMode=""Fixed"" Nullable=""false"" />
+        <Property Name=""UserName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""FirstName"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""LastName"" Type=""Edm.String"" />
         <Property Name=""MiddleName"" Type=""Edm.String"" />
@@ -2435,8 +2435,8 @@ namespace Default
         <Key>
           <PropertyRef Name=""AirlineCode"" />
         </Key>
-        <Property Name=""AirlineCode"" Type=""Edm.String"" ConcurrencyMode=""Fixed"" Nullable=""false"" />
-        <Property Name=""Name"" Type=""Edm.String"" ConcurrencyMode=""Fixed"" />
+        <Property Name=""AirlineCode"" Type=""Edm.String"" Nullable=""false"" />
+        <Property Name=""Name"" Type=""Edm.String"" />
       </EntityType>
       <EntityType Name=""Airport"">
         <Key>

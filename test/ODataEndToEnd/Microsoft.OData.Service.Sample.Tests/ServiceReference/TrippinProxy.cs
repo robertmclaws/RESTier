@@ -497,7 +497,7 @@ namespace Microsoft.OData.Service.Sample.Trippin.Models
         </Key>
         <Property Name=""AirlineCode"" Type=""Edm.String"" Nullable=""false"" />
         <Property Name=""Name"" Type=""Edm.String"" />
-        <Property Name=""TimeStampValue"" Type=""Edm.Binary"" ConcurrencyMode=""Fixed"" />
+        <Property Name=""TimeStampValue"" Type=""Edm.Binary"" />
       </EntityType>
       <EntityType Name=""Airport"">
         <Key>
@@ -535,11 +535,11 @@ namespace Microsoft.OData.Service.Sample.Trippin.Models
         <Key>
           <PropertyRef Name=""FlightId"" />
         </Key>
-        <Property Name=""FlightId"" Type=""Edm.Int32"" ConcurrencyMode=""Fixed"" Nullable=""false"" />
-        <Property Name=""ConfirmationCode"" Type=""Edm.String"" ConcurrencyMode=""Fixed"" />
-        <Property Name=""StartsAt"" Type=""Edm.DateTimeOffset"" ConcurrencyMode=""Fixed"" Nullable=""false"" />
-        <Property Name=""EndsAt"" Type=""Edm.DateTimeOffset"" ConcurrencyMode=""Fixed"" Nullable=""false"" />
-        <Property Name=""Duration"" Type=""Edm.Duration"" ConcurrencyMode=""Fixed"" Nullable=""false"" />
+        <Property Name=""FlightId"" Type=""Edm.Int32"" Nullable=""false"" />
+        <Property Name=""ConfirmationCode"" Type=""Edm.String"" />
+        <Property Name=""StartsAt"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
+        <Property Name=""EndsAt"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
+        <Property Name=""Duration"" Type=""Edm.Duration"" Nullable=""false"" />
         <Property Name=""SeatNumber"" Type=""Edm.String"" />
         <Property Name=""FlightNumber"" Type=""Edm.String"" />
         <Property Name=""FromId"" Type=""Edm.String"" />
@@ -607,7 +607,7 @@ namespace Microsoft.OData.Service.Sample.Trippin.Models
         <Property Name=""Description"" Type=""Edm.String"" />
         <Property Name=""StartsAt"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <Property Name=""EndsAt"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
-        <Property Name=""LastUpdated"" Type=""Edm.DateTimeOffset"" ConcurrencyMode=""Fixed"" Nullable=""false"" />
+        <Property Name=""LastUpdated"" Type=""Edm.DateTimeOffset"" Nullable=""false"" />
         <NavigationProperty Name=""Flights"" Type=""Collection(Microsoft.OData.Service.Sample.Trippin.Models.Flight)"" />
         <NavigationProperty Name=""Events"" Type=""Collection(Microsoft.OData.Service.Sample.Trippin.Models.Event)"" />
       </EntityType>

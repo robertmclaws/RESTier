@@ -45,9 +45,9 @@ namespace Microsoft.Restier.Core
 
             Type returnType = typeof(bool);
             string methodName = GetAuthorizeMethodName(item);
-            MethodInfo method = this.targetType.GetQualifiedMethod(methodName);
+            MethodInfo method = this.targetType.FindQualifiedMethod(methodName);
 
-            if (method != null && method.IsFamily &&
+            if (method != null && (method.IsFamily || method.IsFamilyOrAssembly) &&
                 method.ReturnType == returnType)
             {
                 object target = null;
@@ -78,15 +78,15 @@ namespace Microsoft.Restier.Core
                 case ChangeSetItemTypes.DataModification:
                     DataModificationItem dataModification = (DataModificationItem)item;
                     string operationName = null;
-                    if (dataModification.DataModificationItemAction == DataModificationItemActions.Insert)
+                    if (dataModification.DataModificationItemAction == DataModificationItemAction.Insert)
                     {
                         operationName = ConventionBasedChangeSetConstants.AuthorizeMethodDataModificationInsert;
                     }
-                    else if (dataModification.DataModificationItemAction == DataModificationItemActions.Update)
+                    else if (dataModification.DataModificationItemAction == DataModificationItemAction.Update)
                     {
                         operationName = ConventionBasedChangeSetConstants.AuthorizeMethodDataModificationUpdate;
                     }
-                    else if (dataModification.DataModificationItemAction == DataModificationItemActions.Remove)
+                    else if (dataModification.DataModificationItemAction == DataModificationItemAction.Remove)
                     {
                         operationName = ConventionBasedChangeSetConstants.AuthorizeMethodDataModificationDelete;
                     }

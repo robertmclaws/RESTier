@@ -73,15 +73,15 @@ namespace Microsoft.Restier.Core.Submit
                 case ChangeSetItemTypes.DataModification:
                     DataModificationItem dataModification = (DataModificationItem)item;
                     string message = null;
-                    if (dataModification.DataModificationItemAction == DataModificationItemActions.Insert)
+                    if (dataModification.DataModificationItemAction == DataModificationItemAction.Insert)
                     {
                         message = Resources.NoPermissionToInsertEntity;
                     }
-                    else if (dataModification.DataModificationItemAction == DataModificationItemActions.Update)
+                    else if (dataModification.DataModificationItemAction == DataModificationItemAction.Update)
                     {
                         message = Resources.NoPermissionToUpdateEntity;
                     }
-                    else if (dataModification.DataModificationItemAction == DataModificationItemActions.Remove)
+                    else if (dataModification.DataModificationItemAction == DataModificationItemAction.Remove)
                     {
                         message = Resources.NoPermissionToDeleteEntity;
                     }

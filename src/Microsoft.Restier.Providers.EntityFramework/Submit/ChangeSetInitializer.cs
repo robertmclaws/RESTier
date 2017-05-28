@@ -53,18 +53,18 @@ namespace Microsoft.Restier.Providers.EntityFramework
 
                 object resource;
 
-                if (entry.DataModificationItemAction == DataModificationItemActions.Insert)
+                if (entry.DataModificationItemAction == DataModificationItemAction.Insert)
                 {
                     resource = set.Create();
                     SetValues(resource, resourceType, entry.LocalValues);
                     set.Add(resource);
                 }
-                else if (entry.DataModificationItemAction == DataModificationItemActions.Remove)
+                else if (entry.DataModificationItemAction == DataModificationItemAction.Remove)
                 {
                     resource = await FindResource(context, entry, cancellationToken);
                     set.Remove(resource);
                 }
-                else if (entry.DataModificationItemAction == DataModificationItemActions.Update)
+                else if (entry.DataModificationItemAction == DataModificationItemAction.Update)
                 {
                     resource = await FindResource(context, entry, cancellationToken);
 

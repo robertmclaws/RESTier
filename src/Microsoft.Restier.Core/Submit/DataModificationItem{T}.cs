@@ -42,7 +42,7 @@ namespace Microsoft.Restier.Core.Submit
             string resourceSetName,
             Type expectedResourceType,
             Type actualResourceType,
-            DataModificationItemActions action,
+            DataModificationItemAction action,
             IReadOnlyDictionary<string, object> resourceKey,
             IReadOnlyDictionary<string, object> originalValues,
             IReadOnlyDictionary<string, object> localValues)

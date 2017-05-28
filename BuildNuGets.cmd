@@ -16,7 +16,7 @@ if not defined config set config=Debug
 
 :Configure
 set version=%2
-if not defined version set version=1.0.0-beta2
+if not defined version set version=1.0.0-beta2c
 
 if exist bin\nuget\%config% goto Build
 md bin\nuget\%config%

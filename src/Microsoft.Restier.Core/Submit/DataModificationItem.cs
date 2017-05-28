@@ -46,7 +46,7 @@ namespace Microsoft.Restier.Core.Submit
             string resourceSetName,
             Type expectedResourceType,
             Type actualResourceType,
-            DataModificationItemActions action,
+            DataModificationItemAction action,
             IReadOnlyDictionary<string, object> resourceKey,
             IReadOnlyDictionary<string, object> originalValues,
             IReadOnlyDictionary<string, object> localValues)
@@ -87,7 +87,7 @@ namespace Microsoft.Restier.Core.Submit
         /// <summary>
         /// Gets or sets the action to be taken.
         /// </summary>
-        public DataModificationItemActions DataModificationItemAction { get; set; }
+        public DataModificationItemAction DataModificationItemAction { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether the resource should be fully replaced by the modification.
@@ -155,7 +155,7 @@ namespace Microsoft.Restier.Core.Submit
         public IQueryable ApplyTo(IQueryable query)
         {
             Ensure.NotNull(query, "query");
-            if (this.DataModificationItemAction == DataModificationItemActions.Insert)
+            if (this.DataModificationItemAction == DataModificationItemAction.Insert)
             {
                 throw new InvalidOperationException(Resources.DataModificationNotSupportCreateResource);
             }

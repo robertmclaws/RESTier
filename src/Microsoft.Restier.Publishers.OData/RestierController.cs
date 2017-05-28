@@ -14,6 +14,7 @@ using Microsoft.Restier.Publishers.OData.Query;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Net;
@@ -160,7 +161,7 @@ namespace Microsoft.Restier.Publishers.OData
                 entitySet.Name,
                 expectedEntityType.GetClrType(Api.ServiceProvider),
                 actualEntityType.GetClrType(Api.ServiceProvider),
-                DataModificationItemActions.Insert,
+                DataModificationItemAction.Insert,
                 null,
                 null,
                 edmEntityObject.CreatePropertyDictionary(actualEntityType, api, true));
@@ -229,7 +230,7 @@ namespace Microsoft.Restier.Publishers.OData
                 entitySet.Name,
                 path.EdmType.GetClrType(Api.ServiceProvider),
                 null,
-                DataModificationItemActions.Remove,
+                DataModificationItemAction.Remove,
                 RestierQueryBuilder.GetPathKeyValues(path),
                 propertiesInEtag,
                 null);
@@ -380,7 +381,7 @@ namespace Microsoft.Restier.Publishers.OData
                 entitySet.Name,
                 expectedEntityType.GetClrType(Api.ServiceProvider),
                 actualEntityType.GetClrType(Api.ServiceProvider),
-                DataModificationItemActions.Update,
+                DataModificationItemAction.Update,
                 RestierQueryBuilder.GetPathKeyValues(path),
                 propertiesInEtag,
                 edmEntityObject.CreatePropertyDictionary(actualEntityType, api, false));
@@ -696,21 +697,24 @@ namespace Microsoft.Restier.Publishers.OData
         {
             if (!this.ModelState.IsValid)
             {
+                if (Debugger.IsAttached)
+                {
+                    Debugger.Break();
+                }
+
                 var errorList = (
                     from item in this.ModelState
                     where item.Value.Errors.Any()
                     select
-                        string.Format(
-                            CultureInfo.InvariantCulture,
-                            "{{ Error: {0}, Exception {1} }}",
-                            item.Value.Errors[0].ErrorMessage,
-                            item.Value.Errors[0].Exception.Message)).ToList();
+                        from error in item.Value.Errors
+                        select $"{{ 'item': '{item.Key}', 'value': '{item.Value}', 'error': '{error.ErrorMessage}', 'exception': '{error.Exception}' }}")
+                .ToList();
 
                 throw new ODataException(
                     string.Format(
                         CultureInfo.InvariantCulture,
-                        Resources.ModelStateIsNotValid,
-                        string.Join(";", errorList)));
+                        "Payload validation returned one or more errors. Details: {0}",
+                        string.Join(",", errorList)));
             }
         }
     }

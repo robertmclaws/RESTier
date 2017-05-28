@@ -62,15 +62,15 @@ namespace Microsoft.Restier.Core
                 case ChangeSetItemTypes.DataModification:
                     DataModificationItem dataModification = (DataModificationItem)item;
                     string operationName = null;
-                    if (dataModification.DataModificationItemAction == DataModificationItemActions.Insert)
+                    if (dataModification.DataModificationItemAction == DataModificationItemAction.Insert)
                     {
                         operationName = ConventionBasedChangeSetConstants.FilterMethodDataModificationInsert;
                     }
-                    else if (dataModification.DataModificationItemAction == DataModificationItemActions.Update)
+                    else if (dataModification.DataModificationItemAction == DataModificationItemAction.Update)
                     {
                         operationName = ConventionBasedChangeSetConstants.FilterMethodDataModificationUpdate;
                     }
-                    else if (dataModification.DataModificationItemAction == DataModificationItemActions.Remove)
+                    else if (dataModification.DataModificationItemAction == DataModificationItemAction.Remove)
                     {
                         operationName = ConventionBasedChangeSetConstants.FilterMethodDataModificationDelete;
                     }
@@ -132,8 +132,7 @@ namespace Microsoft.Restier.Core
                 if (ParametersMatch(methodParameters, parameters))
                 {
                     object result = method.Invoke(target, parameters);
-                    Task resultTask = result as Task;
-                    if (resultTask != null)
+                    if (result is Task resultTask)
                     {
                         return resultTask;
                     }
