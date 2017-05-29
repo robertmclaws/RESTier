@@ -10,6 +10,8 @@
     <DocumentationFile>$(OutputPath)$(AssemblyName).xml</DocumentationFile>
     <RunCodeAnalysis>$(CodeAnalysis)</RunCodeAnalysis>
     <CodeAnalysisRuleSet>..\Strict.ruleset</CodeAnalysisRuleSet>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
     <!-- TODO: compile as a portable assembly -->
   </PropertyGroup>
   <ItemGroup>
@@ -131,9 +133,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Microsoft.Restier.Core.nuspec" />
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="..\Shared\SharedResources\SharedResources.resx">
@@ -146,6 +146,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Microsoft.Restier.Core</CustomToolNamespace>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

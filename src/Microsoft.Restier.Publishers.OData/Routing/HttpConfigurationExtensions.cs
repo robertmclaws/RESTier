@@ -4,7 +4,6 @@
 using Microsoft.OData;
 using Microsoft.Restier.Core;
 using Microsoft.Restier.Publishers.OData.Batch;
-using Microsoft.Restier.Publishers.OData.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

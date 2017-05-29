@@ -5,7 +5,6 @@ using Microsoft.OData.Edm;
 using Microsoft.OData.UriParser;
 using Microsoft.Restier.Core;
 using Microsoft.Restier.Publishers.OData.Model;
-using Microsoft.Restier.Publishers.OData.Properties;
 using System;
 using System.Collections.Generic;
 using System.Globalization;

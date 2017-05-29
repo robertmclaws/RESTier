@@ -3,7 +3,6 @@
 
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OData.Edm;
-using Microsoft.Restier.Publishers.OData.Properties;
 using System;
 using System.Globalization;
 using System.Linq;

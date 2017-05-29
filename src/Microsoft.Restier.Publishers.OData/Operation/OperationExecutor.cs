@@ -6,7 +6,6 @@ using Microsoft.Restier.Core;
 using Microsoft.Restier.Core.Operation;
 using Microsoft.Restier.Publishers.OData.Formatter;
 using Microsoft.Restier.Publishers.OData.Model;
-using Microsoft.Restier.Publishers.OData.Properties;
 using System;
 using System.Collections;
 using System.Collections.Generic;
