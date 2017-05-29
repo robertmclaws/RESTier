@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Microsoft Corporation.  All rights reserved.
 // Licensed under the MIT License.  See License.txt in the project root for license information.
 
+using Microsoft.OData.UriParser;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -11,7 +12,6 @@ using System.Web;
 using System.Web.Http.Routing;
 using System.Web.OData.Extensions;
 using System.Web.OData.Routing;
-using Microsoft.OData.UriParser;
 
 namespace Microsoft.OData.Service.Sample.TrippinInMemory
 {

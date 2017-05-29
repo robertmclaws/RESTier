@@ -1,11 +1,11 @@
 ﻿// Copyright (c) Microsoft Corporation.  All rights reserved.
 // Licensed under the MIT License.  See License.txt in the project root for license information.
 
-using System.Web.Http;
-using System.Web.OData.Extensions;
 using Microsoft.OData.Service.Sample.Northwind.Models;
 using Microsoft.Restier.Publishers.OData;
 using Microsoft.Restier.Publishers.OData.Batch;
+using System.Web.Http;
+using System.Web.OData.Extensions;
 
 namespace Microsoft.OData.Service.Sample.Northwind
 {

@@ -1,10 +1,10 @@
 ﻿// Copyright (c) Microsoft Corporation.  All rights reserved.
 // Licensed under the MIT License.  See License.txt in the project root for license information.
 
+using Microsoft.OData.Service.Sample.Northwind.Models;
 using System.Linq;
 using System.Web.Http;
 using System.Web.OData;
-using Microsoft.OData.Service.Sample.Northwind.Models;
 
 namespace Microsoft.OData.Service.Sample.Northwind.Controllers
 {

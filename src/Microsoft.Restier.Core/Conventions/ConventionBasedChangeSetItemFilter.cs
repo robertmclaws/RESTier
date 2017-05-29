@@ -1,14 +1,14 @@
 ﻿// Copyright (c) Microsoft Corporation.  All rights reserved.
 // Licensed under the MIT License.  See License.txt in the project root for license information.
 
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Restier.Core.Submit;
 using System;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Restier.Core.Submit;
 
 namespace Microsoft.Restier.Core
 {

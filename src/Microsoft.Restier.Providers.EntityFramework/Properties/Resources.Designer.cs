@@ -8,10 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Microsoft.Restier.Providers.EntityFramework {
-    using System;
-    
-    
+namespace Microsoft.Restier.Providers.EntityFramework
+{
+
+
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>

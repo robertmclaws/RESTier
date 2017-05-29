@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Text;
 using System.Web.OData.Routing;
-using Microsoft.OData.Edm;
 
 namespace Microsoft.OData.Service.Sample.Trippin.Extension
 {

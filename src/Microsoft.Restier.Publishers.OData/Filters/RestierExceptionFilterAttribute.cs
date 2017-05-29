@@ -2,7 +2,10 @@
 // Licensed under the MIT License.  See License.txt in the project root for license information.
 
 extern alias Net;
-
+using Microsoft.OData;
+using Microsoft.Restier.Core;
+using Microsoft.Restier.Core.Submit;
+using Net::System.Net.Http.Formatting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,10 +17,6 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Filters;
 using System.Web.Http.Results;
-using Microsoft.OData;
-using Microsoft.Restier.Core;
-using Microsoft.Restier.Core.Submit;
-using Net::System.Net.Http.Formatting;
 
 namespace Microsoft.Restier.Publishers.OData
 {

@@ -1,6 +1,8 @@
 ﻿// Copyright (c) Microsoft Corporation.  All rights reserved.
 // Licensed under the MIT License.  See License.txt in the project root for license information.
 
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OData;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -10,8 +12,6 @@ using System.Web.Http;
 using System.Web.Http.Batch;
 using System.Web.OData.Batch;
 using System.Web.OData.Extensions;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.OData;
 
 namespace Microsoft.Restier.Publishers.OData.Batch
 {

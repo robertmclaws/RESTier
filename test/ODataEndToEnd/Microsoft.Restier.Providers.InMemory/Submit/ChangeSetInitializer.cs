@@ -1,6 +1,11 @@
 ﻿// Copyright (c) Microsoft Corporation.  All rights reserved.
 // Licensed under the MIT License.  See License.txt in the project root for license information.
 
+using Microsoft.Restier.Core;
+using Microsoft.Restier.Core.Submit;
+using Microsoft.Restier.Providers.InMemory.DataStoreManager;
+using Microsoft.Restier.Providers.InMemory.Properties;
+using Microsoft.Restier.Providers.InMemory.Utils;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,11 +15,6 @@ using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.OData;
-using Microsoft.Restier.Core;
-using Microsoft.Restier.Core.Submit;
-using Microsoft.Restier.Providers.InMemory.DataStoreManager;
-using Microsoft.Restier.Providers.InMemory.Properties;
-using Microsoft.Restier.Providers.InMemory.Utils;
 
 namespace Microsoft.Restier.Providers.InMemory.Submit
 {

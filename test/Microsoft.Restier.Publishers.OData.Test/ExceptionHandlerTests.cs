@@ -1,13 +1,13 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Restier.Core;
+using Microsoft.Restier.Core.Query;
+using System;
 using System.Linq.Expressions;
 using System.Net;
 using System.Net.Http;
 using System.Security;
 using System.Threading.Tasks;
 using System.Web.Http;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Restier.Core;
-using Microsoft.Restier.Core.Query;
 using Xunit;
 
 namespace Microsoft.Restier.Publishers.OData.Test

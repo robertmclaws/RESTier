@@ -1,16 +1,9 @@
 ﻿// Copyright (c) Microsoft Corporation.  All rights reserved.
 // Licensed under the MIT License.  See License.txt in the project root for license information.
 
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Web.OData.Query;
-using System.Web.OData.Routing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OData.Edm;
+using Microsoft.OData.Edm.Vocabularies;
 using Microsoft.OData.Service.Sample.Trippin.Extension;
 using Microsoft.OData.Service.Sample.Trippin.Models;
 using Microsoft.Restier.Core;
@@ -18,10 +11,17 @@ using Microsoft.Restier.Core.Model;
 using Microsoft.Restier.Core.Submit;
 using Microsoft.Restier.Providers.EntityFramework;
 using Microsoft.Restier.Publishers.OData.Model;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Web.OData.Builder;
-using Microsoft.OData.Edm.Vocabularies;
+using System.Web.OData.Query;
+using System.Web.OData.Routing;
 
 namespace Microsoft.OData.Service.Sample.Trippin.Api
 {

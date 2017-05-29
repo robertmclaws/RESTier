@@ -1,13 +1,6 @@
 ﻿// Copyright (c) Microsoft Corporation.  All rights reserved.
 // Licensed under the MIT License.  See License.txt in the project root for license information.
 
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Web.OData.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OData.Edm;
 using Microsoft.OData.Service.Sample.TrippinInMemory.Models;
@@ -19,6 +12,13 @@ using Microsoft.Restier.Providers.InMemory.Submit;
 using Microsoft.Restier.Providers.InMemory.Utils;
 using Microsoft.Restier.Publishers.OData.Model;
 using Microsoft.Spatial;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Web.OData.Builder;
 
 namespace Microsoft.OData.Service.Sample.TrippinInMemory.Api
 {

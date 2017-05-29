@@ -1,11 +1,11 @@
 ﻿// Copyright (c) Microsoft Corporation.  All rights reserved.
 // Licensed under the MIT License.  See License.txt in the project root for license information.
 
+using Microsoft.OData.Edm;
+using Microsoft.Restier.Core.Query;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using Microsoft.OData.Edm;
-using Microsoft.Restier.Core.Query;
 
 namespace Microsoft.Restier.Providers.EntityFramework
 {

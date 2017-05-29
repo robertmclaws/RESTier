@@ -1,12 +1,12 @@
-﻿using System;
+﻿using Microsoft.OData.Service.Sample.Northwind.Models;
+using Microsoft.Restier.Tests;
+using System;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
-using Microsoft.OData.Service.Sample.Northwind.Models;
-using Microsoft.Restier.Tests;
 using Xunit;
 
 namespace Microsoft.OData.Service.Sample.Northwind.Tests

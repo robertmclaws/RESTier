@@ -10,7 +10,6 @@ using Microsoft.EntityFrameworkCore;
 #endif
 using Microsoft.OData.Service.Sample.Northwind.Models;
 using Microsoft.Restier.Core;
-using Microsoft.Restier.Core.Model;
 using Microsoft.Restier.Core.Submit;
 using Microsoft.Restier.Providers.EntityFramework;
 using Microsoft.Restier.Publishers.OData;
