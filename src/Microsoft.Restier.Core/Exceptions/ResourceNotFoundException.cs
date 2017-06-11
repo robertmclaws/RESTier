@@ -12,7 +12,7 @@ namespace Microsoft.Restier.Core
     public class ResourceNotFoundException : Exception
     {
         /// <summary>
-        /// Initializes a new instance of the ResourceNotFoundException class.
+        /// Initializes a new instance of the <see cref="ResourceNotFoundException"/> class.
         /// </summary>
         public ResourceNotFoundException()
             : this(null, null)
@@ -20,7 +20,7 @@ namespace Microsoft.Restier.Core
         }
 
         /// <summary>
-        /// Initializes a new instance of the ResourceNotFoundException class.
+        /// Initializes a new instance of the <see cref="ResourceNotFoundException"/> class.
         /// </summary>
         /// <param name="message">Plain text error message for this exception.</param>
         public ResourceNotFoundException(string message)
@@ -29,7 +29,7 @@ namespace Microsoft.Restier.Core
         }
 
         /// <summary>
-        /// Initializes a new instance of the ResourceNotFoundException class.
+        /// Initializes a new instance of the <see cref="ResourceNotFoundException"/> class.
         /// </summary>
         /// <param name="message">Plain text error message for this exception.</param>
         /// <param name="innerException">Exception that caused this exception to be thrown.</param>

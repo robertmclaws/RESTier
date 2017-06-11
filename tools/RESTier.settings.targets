@@ -4,14 +4,14 @@
     <DFRootPath>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\'))</DFRootPath>
     <DFToolsPath>$(MSBuildThisFileDirectory)</DFToolsPath>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
-    <StyleCopTargets>$(DFRootPath)packages\StyleCop.MSBuild.4.7.50.0\build\StyleCop.MSBuild.Targets</StyleCopTargets>
+    <!--<StyleCopTargets>$(DFRootPath)packages\StyleCop.MSBuild.4.7.50.0\build\StyleCop.MSBuild.Targets</StyleCopTargets>-->
   </PropertyGroup>
   
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <OutputPath Condition="'$(OutputPath)' == ''">$(DFRootPath)bin\$(Configuration)\</OutputPath>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>

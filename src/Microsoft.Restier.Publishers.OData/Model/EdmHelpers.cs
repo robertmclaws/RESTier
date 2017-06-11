@@ -41,9 +41,9 @@ namespace Microsoft.Restier.Publishers.OData.Model
         /// <summary>
         /// Get the clr type for a specified edm type
         /// </summary>
-        /// <param name="edmType">The edm type to get clr type</param>
+        /// <param name="edmType">The edm type to get CLR type</param>
         /// <param name="serviceProvider">The provider to get service from DI container</param>
-        /// <returns>The clr type</returns>
+        /// <returns>The CLR type</returns>
         public static Type GetClrType(this IEdmType edmType, IServiceProvider serviceProvider)
         {
             IEdmModel edmModel = serviceProvider.GetService<IEdmModel>();

@@ -24,7 +24,6 @@ namespace Microsoft.Restier.Core
             this.targetType = targetType;
         }
 
-        /// <inheritdoc/>
         public static void ApplyTo(
             IServiceCollection services,
             Type targetType)

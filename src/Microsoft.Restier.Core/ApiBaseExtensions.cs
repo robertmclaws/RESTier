@@ -192,7 +192,7 @@ namespace Microsoft.Restier.Core
             }
 
             Task<IEdmModel> running;
-            var source = config.CompeteModelGeneration(out running);
+            var source = config.CompleteModelGeneration(out running);
             if (source == null)
             {
                 return await running;

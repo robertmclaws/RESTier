@@ -426,7 +426,6 @@ namespace Microsoft.Restier.Publishers.OData.Model
                 ModelCache = modelCache;
             }
 
-            /// <inheritdoc/>
             public IQueryExpressionExpander InnerHandler { get; set; }
 
             private RestierModelExtender ModelCache { get; set; }

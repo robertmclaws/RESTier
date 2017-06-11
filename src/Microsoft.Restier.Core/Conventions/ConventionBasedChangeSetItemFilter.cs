@@ -25,7 +25,6 @@ namespace Microsoft.Restier.Core
             this.targetType = targetType;
         }
 
-        /// <inheritdoc/>
         public static void ApplyTo(
             IServiceCollection services,
             Type targetType)
@@ -133,8 +132,7 @@ namespace Microsoft.Restier.Core
                 if (ParametersMatch(methodParameters, parameters))
                 {
                     object result = method.Invoke(target, parameters);
-                    Task resultTask = result as Task;
-                    if (resultTask != null)
+                    if (result is Task resultTask)
                     {
                         return resultTask;
                     }

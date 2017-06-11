@@ -1,6 +1,5 @@
 ﻿// Copyright (c) Microsoft Corporation.  All rights reserved.
 // Licensed under the MIT License.  See License.txt in the project root for license information.
-extern alias Net;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OData;
 using Microsoft.OData.Edm;
@@ -12,11 +11,10 @@ using Microsoft.Restier.Core.Submit;
 using Microsoft.Restier.Publishers.OData.Batch;
 using Microsoft.Restier.Publishers.OData.Model;
 using Microsoft.Restier.Publishers.OData.Query;
-// This is a must for creating response with correct extension method
-using Net::System.Net.Http;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Net;
@@ -88,9 +86,8 @@ namespace Microsoft.Restier.Publishers.OData
             ETag etag;
 
             // TODO #365 Do not support additional path segment after function call now
-            if (lastSegment is OperationImportSegment)
+            if (lastSegment is OperationImportSegment unboundSegment)
             {
-                var unboundSegment = (OperationImportSegment)lastSegment;
                 var operation = unboundSegment.OperationImports.FirstOrDefault();
                 Func<string, object> getParaValueFunc = p => unboundSegment.GetParameterValue(p);
                 result = await ExecuteOperationAsync(
@@ -283,8 +280,7 @@ namespace Microsoft.Restier.Publishers.OData
                 return parameters[p];
             };
 
-            var segment = lastSegment as OperationImportSegment;
-            if (segment != null)
+            if (lastSegment is OperationImportSegment segment)
             {
                 var unboundSegment = segment;
                 var operation = unboundSegment.OperationImports.FirstOrDefault();
@@ -386,9 +382,10 @@ namespace Microsoft.Restier.Publishers.OData
                 DataModificationItemAction.Update,
                 RestierQueryBuilder.GetPathKeyValues(path),
                 propertiesInEtag,
-                edmEntityObject.CreatePropertyDictionary(actualEntityType, api, false));
-            updateItem.IsFullReplaceUpdateRequest = isFullReplaceUpdate;
-
+                edmEntityObject.CreatePropertyDictionary(actualEntityType, api, false))
+            {
+                IsFullReplaceUpdateRequest = isFullReplaceUpdate
+            };
             RestierChangeSetProperty changeSetProperty = this.Request.GetChangeSet();
             if (changeSetProperty == null)
             {
@@ -526,15 +523,10 @@ namespace Microsoft.Restier.Publishers.OData
             return queryable;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="queryable"></param>
-        /// <param name="path"></param>
-        /// <param name="applyCount"></param>
-        /// <returns></returns>
+#pragma warning disable SA1009 // Closing parenthesis must be spaced correctly
         private async Task<(IQueryable Queryable, ETag Etag)> ApplyQueryOptionsAsync(
             IQueryable queryable, ODataPath path, bool applyCount)
+#pragma warning restore SA1009 // Closing parenthesis must be spaced correctly
         {
             ETag etag = null;
 
@@ -641,9 +633,10 @@ namespace Microsoft.Restier.Publishers.OData
                 Api,
                 isFunction,
                 bindingParameterValue,
-                Request.GetRequestContainer());
-
-            context.Request = Request;
+                Request.GetRequestContainer())
+            {
+                Request = Request
+            };
             var result = executor.ExecuteOperationAsync(context, cancellationToken);
             return result;
         }
@@ -704,21 +697,24 @@ namespace Microsoft.Restier.Publishers.OData
         {
             if (!this.ModelState.IsValid)
             {
+                if (Debugger.IsAttached)
+                {
+                    Debugger.Break();
+                }
+
                 var errorList = (
                     from item in this.ModelState
                     where item.Value.Errors.Any()
                     select
-                        string.Format(
-                            CultureInfo.InvariantCulture,
-                            "{{ Error: {0}, Exception {1} }}",
-                            item.Value.Errors[0].ErrorMessage,
-                            item.Value.Errors[0].Exception.Message)).ToList();
+                        from error in item.Value.Errors
+                        select $"{{ 'item': '{item.Key}', 'value': '{item.Value}', 'error': '{error.ErrorMessage}', 'exception': '{error.Exception}' }}")
+                .ToList();
 
                 throw new ODataException(
                     string.Format(
                         CultureInfo.InvariantCulture,
-                        Resources.ModelStateIsNotValid,
-                        string.Join(";", errorList)));
+                        "Payload validation returned one or more errors. Details: {0}",
+                        string.Join(",", errorList)));
             }
         }
     }

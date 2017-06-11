@@ -10,8 +10,6 @@
     <DocumentationFile>$(OutputPath)$(AssemblyName).xml</DocumentationFile>
     <RunCodeAnalysis>$(CodeAnalysis)</RunCodeAnalysis>
     <CodeAnalysisRuleSet>..\Strict.ruleset</CodeAnalysisRuleSet>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <TargetFrameworkProfile />
     <!-- TODO: compile as a portable assembly -->
   </PropertyGroup>
   <ItemGroup>
@@ -94,6 +92,10 @@
     <Compile Include="Operation\IOperationAuthorizer.cs" />
     <Compile Include="Operation\IOperationExecutor.cs" />
     <Compile Include="Operation\OperationContext.cs" />
+    <Compile Include="QueryableSource{T}.cs" />
+    <Compile Include="Query\DataSourceStubModelReference.cs" />
+    <Compile Include="Query\ParameterModelReference.cs" />
+    <Compile Include="Query\PropertyModelReference.cs" />
     <Compile Include="RestierContainerBuilder.cs" />
     <Compile Include="ServiceCollectionExtensions.cs" />
     <Compile Include="Model\IModelBuilder.cs" />
@@ -118,8 +120,14 @@
     <Compile Include="Query\QueryModelReference.cs" />
     <Compile Include="Query\QueryRequest.cs" />
     <Compile Include="Query\QueryResult.cs" />
+    <Compile Include="Shared\TypeHelper.cs" />
     <Compile Include="Submit\ChangeSet.cs" />
     <Compile Include="Submit\ChangeSetItem.cs" />
+    <Compile Include="Submit\ChangeSetItemProcessingStage.cs" />
+    <Compile Include="Submit\ChangeSetItemType.cs" />
+    <Compile Include="Submit\DataModificationItem.cs" />
+    <Compile Include="Submit\DataModificationItemActions.cs" />
+    <Compile Include="Submit\DataModificationItem{T}.cs" />
     <Compile Include="Submit\DefaultSubmitHandler.cs" />
     <Compile Include="Submit\IChangeSetItemAuthorizer.cs" />
     <Compile Include="Submit\IChangeSetItemFilter.cs" />
@@ -132,8 +140,13 @@
     <Compile Include="Submit\ChangeSetItemValidationResult.cs" />
   </ItemGroup>
   <ItemGroup>
+    <AdditionalFiles Include="..\stylecop.json">
+      <Link>stylecop.json</Link>
+    </AdditionalFiles>
     <None Include="Microsoft.Restier.Core.nuspec" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="..\Shared\SharedResources\SharedResources.resx">
@@ -153,6 +166,11 @@
     <CodeAnalysisDictionary Include="..\CodeAnalysisDictionary.xml">
       <Link>CodeAnalysisDictionary.xml</Link>
     </CodeAnalysisDictionary>
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\Newtonsoft.Json.dll" />
+    <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
+    <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(StyleCopTargets)" Condition="Exists('$(StyleCopTargets)')" />

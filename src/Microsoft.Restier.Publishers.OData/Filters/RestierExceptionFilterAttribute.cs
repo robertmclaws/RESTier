@@ -2,6 +2,7 @@
 // Licensed under the MIT License.  See License.txt in the project root for license information.
 
 extern alias Net;
+
 using Microsoft.OData;
 using Microsoft.Restier.Core;
 using Microsoft.Restier.Core.Submit;
@@ -67,8 +68,7 @@ namespace Microsoft.Restier.Publishers.OData
            bool useVerboseErros,
            CancellationToken cancellationToken)
         {
-            ChangeSetValidationException validationException = context.Exception as ChangeSetValidationException;
-            if (validationException != null)
+            if (context.Exception is ChangeSetValidationException validationException)
             {
                 var exceptionResult = new NegotiatedContentResult<IEnumerable<ValidationResultDto>>(
                     HttpStatusCode.BadRequest,
@@ -125,9 +125,9 @@ namespace Microsoft.Restier.Publishers.OData
                 code = HttpStatusCode.NotImplemented;
             }
 
-            // When exception occured in a ChangeSet request,
+            // When exception occurred in a ChangeSet request,
             // exception must be handled in OnChangeSetCompleted
-            // to avoid deadlock in Github Issue #82.
+            // to avoid deadlock in GitHub Issue #82.
             var changeSetProperty = context.Request.GetChangeSet();
             if (changeSetProperty != null)
             {

@@ -24,7 +24,6 @@ namespace Microsoft.Restier.Core
             this.targetType = targetType;
         }
 
-        /// <inheritdoc/>
         public static void ApplyTo(
             IServiceCollection services,
             Type targetType)
@@ -48,7 +47,7 @@ namespace Microsoft.Restier.Core
             string methodName = GetAuthorizeMethodName(item);
             MethodInfo method = this.targetType.GetQualifiedMethod(methodName);
 
-            if (method != null && method.IsFamily &&
+            if (method != null && (method.IsFamily || method.IsFamilyOrAssembly) &&
                 method.ReturnType == returnType)
             {
                 object target = null;

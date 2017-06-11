@@ -19,10 +19,10 @@ using System.Web.OData.Query;
 
 namespace Microsoft.Restier.Publishers.OData
 {
-    /// <summary>
-    /// Contains extension methods of <see cref="IServiceCollection"/>.
-    /// This method is used to add odata publisher service into container.
-    /// </summary>
+     /// <summary>
+     /// Contains extension methods of <see cref="IServiceCollection"/>.
+     /// This method is used to add odata publisher service into container.
+     /// </summary>
     public static class ServiceCollectionExtensions
     {
         /// <summary>

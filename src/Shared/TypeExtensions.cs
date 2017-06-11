@@ -2,6 +2,7 @@
 // Licensed under the MIT License.  See License.txt in the project root for license information.
 
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 namespace System
@@ -71,6 +72,17 @@ namespace System
             return null;
         }
 
+        /// <summary>
+        /// Queries the list of all possible methods for a given type and returns the first one that ends in the given string.
+        /// </summary>
+        /// <param name="type">The type to search.</param>
+        /// <param name="methodName">The string containing the method name to find.</param>
+        /// <returns>A <see cref="MethodInfo"/> instance containing details about the method.</returns>
+        public static MethodInfo FindQualifiedMethod(this Type type, string methodName)
+        {
+            return type.GetMethods(QualifiedMethodBindingFlags).FirstOrDefault(c => c.Name.EndsWith(methodName));
+        }
+
         public static MethodInfo GetQualifiedMethod(this Type type, string methodName)
         {
             return type.GetMethod(methodName, QualifiedMethodBindingFlags);
@@ -101,38 +113,6 @@ namespace System
         {
             return type.IsGenericType &&
                    type.GetGenericTypeDefinition() == definition;
-        }
-    }
-
-    internal static class TypeHelper
-    {
-        public static Type GetUnderlyingTypeOrSelf(Type type)
-        {
-            return Nullable.GetUnderlyingType(type) ?? type;
-        }
-
-        public static bool IsEnum(Type type)
-        {
-            Type underlyingTypeOrSelf = GetUnderlyingTypeOrSelf(type);
-            return underlyingTypeOrSelf.IsEnum;
-        }
-
-        public static bool IsDateTime(Type type)
-        {
-            Type underlyingTypeOrSelf = GetUnderlyingTypeOrSelf(type);
-            return underlyingTypeOrSelf == typeof(DateTime);
-        }
-
-        public static bool IsTimeSpan(Type type)
-        {
-            Type underlyingTypeOrSelf = GetUnderlyingTypeOrSelf(type);
-            return underlyingTypeOrSelf == typeof(TimeSpan);
-        }
-
-        public static bool IsDateTimeOffset(Type type)
-        {
-            Type underlyingTypeOrSelf = GetUnderlyingTypeOrSelf(type);
-            return underlyingTypeOrSelf == typeof(DateTimeOffset);
         }
     }
 }
