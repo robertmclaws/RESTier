@@ -130,6 +130,17 @@ namespace Microsoft.OData.Service.Sample.Tests
         }
 
         [Fact]
+        public void TestInlineCountCollection()
+        {
+            int expectedCount = 20;
+            String expectedCountFragment = String.Format("\"@odata.count\":{0}", expectedCount);
+
+            TestGetPayloadContains("People?$count=true", expectedCountFragment);
+            TestGetPayloadContains("People?$count=true&$skip=1", expectedCountFragment);
+            TestGetPayloadContains("People?$count=true&$top=1", expectedCountFragment);
+        }
+
+        [Fact]
         public void TestEntitySet()
         {
             TestGetPayloadContains("People", "FirstName");
